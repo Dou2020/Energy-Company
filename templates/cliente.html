@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-10 px-4">
+
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-md">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-2xl font-bold text-blue-700">Gestión de Empleados</h1>
+            <a href="/insertar" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                Insertar Nuevo Empleado
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">ID</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Nombre</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Departamento</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Salario</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Fecha Ingreso</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Hora de Ingreso</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Correo</th>
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Comentario</th>                        
+                        <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for empleado in empleados %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.EmpleadoID }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.Nombre }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.Departamento }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.Salario }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.FechaIngreso }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.HoraIngreso }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.Correo }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800">{{ empleado.Comentario }}</td>
+                        
+                        <td class="px-4 py-2 text-sm">
+                            <a href="/editar/{{ empleado.EmpleadoID }}" class="text-blue-600 hover:underline mr-4">Editar</a>
+                            <a href="/eliminar/{{ empleado.EmpleadoID }}" class="text-red-600 hover:underline">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="px-4 py-4 text-center text-gray-500">No hay empleados registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
