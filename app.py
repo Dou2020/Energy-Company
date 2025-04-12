@@ -18,7 +18,7 @@ def index():
 
 @app.route("/cliente")
 def cliente():
-    return render_template("cliente.html")
+    return render_template("Cliente/index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
